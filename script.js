@@ -1,46 +1,50 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        
+        event.preventDefault();
+
+
         var name = document.querySelector('input[type="text"]').value;
-        var currentAmount = parseFloat(document.querySelector('input[type="number"]:nth-of-type(2)').value);
-        var creditHistory = parseFloat(document.querySelector('input[type="number"]:nth-of-type(3)').value);
-        var lastDepositDate = parseFloat(document.querySelector('input[type="number"]:nth-of-type(4)').value);
-        var lastLoanCollectionDate = parseFloat(document.querySelector('input[type="number"]:nth-of-type(5)').value);
-        var loanRepaymentPeriod = parseFloat(document.querySelector('input[type="number"]:nth-of-type(6)').value);
-        var lastOperationOnAccount = parseFloat(document.querySelector('input[type="number"]:nth-of-type(7)').value);
+        var Amount = parseFloat(document.querySelector('input[type="number"]:nth-of-type(2)').value);
+        var History = parseFloat(document.querySelector('input[type="number"]:nth-of-type(3)').value);
+        var Deposit = new Date(document.querySelector('input[type="date"]:nth-of-type(4)').value);
+        var Collection = new Date(document.querySelector('input[type="date"]:nth-of-type(5)').value);
+        var Repayment = new Date(document.querySelector('input[type="date"]:nth-of-type(6)').value);
+        var Operation = new Date(document.querySelector('input[type="date"]:nth-of-type(7)').value);
         
-        if (isNaN(currentAmount) || isNaN(creditHistory) || isNaN(lastDepositDate) || isNaN(lastLoanCollectionDate) || isNaN(loanRepaymentPeriod) || isNaN(lastOperationOnAccount)) {
-            alert('Please enter valid numeric values for all fields.');
+        if (isNaN(Amount) || isNaN(History) || isNaN(Deposit.getTime()) || isNaN(Collection.getTime()) || isNaN(Repayment.getTime()) || isNaN(Operation.getTime())) {
+            alert('PLEASE ENTER THE VALID NUMERIC VALUES6 FOR SEVERAL FIELDS AND VALID DATES FOR DATE FIELDS.');
             return;
         }
         
         var points = 0;
-        if (currentAmount >= 0) {
+        if (Amount >= 0) {
             points += 10;
         } else {
             points -= 10;
         }
+        if (History >=0){
         points += 10; 
-        if (lastDepositDate === 1) { 
+        }
+
+        if (Deposit.getTime() === new Date('2024-02-25').getTime()) { 
             points += 5;
         }
-        if (lastLoanCollectionDate > 6) {
+        if (Collection.getTime() > new Date('2024-02-25').getTime()) {
             points += 10;
         }
-        if (loanRepaymentPeriod < 6) {
+        if (Repayment.getTime() < new Date('2024-02-25').getTime()) {
             points += 5;
         }
-        if (lastOperationOnAccount === 1) { 
+        if (Operation.getTime() === new Date('2024-02-25').getTime()) { 
             points += 10;
         } else {
             points += 5; 
         }
         
         if (points >= 30) {
-            alert('Congratulations! '+ name + 'You are eligible for a loan.');
+            alert('CONGRATULATIONS! ' + name + ' YOU  ELIGIBLE FOR LOAN OF ' + Amount + ',' + 'AND YOUR PRESENT POINTS ARE  ' + points + ' POINTS.');
         } else {
-            alert('Sorry,' + name + 'you are not eligible for a loan.');
+            alert('SORRY, ' + name + ', YOU ARE NOT ELIGIBLE FOR A LOAN.');
         }
     });
 });
