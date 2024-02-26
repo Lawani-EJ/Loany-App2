@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
-
 
         var name = document.querySelector('input[type="text"]').value;
         var Amount = parseFloat(document.querySelector('input[type="number"]:nth-of-type(2)').value);
