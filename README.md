@@ -10,7 +10,8 @@ Calculates a score based on the user's input and determines if they are eligible
 HTML
 CSS
 JavaScript
-Getting Started
+
+## Getting Started
 To get started with the Loan Eligibility Checker, follow these steps:
 
 ## Clone the repository to your local machine.
