@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var Operation = new Date(document.querySelector('input[type="date"]:nth-of-type(7)').value);
         
         if (isNaN(Amount) || isNaN(History) || isNaN(Deposit.getTime()) || isNaN(Collection.getTime()) || isNaN(Repayment.getTime()) || isNaN(Operation.getTime())) {
-            alert('PLEASE ENTER THE VALID NUMERIC VALUES6 FOR SEVERAL FIELDS AND VALID DATES FOR DATE FIELDS.');
+            alert('PLEASE ENTER THE VALID NUMERIC VALUES THE FOR SEVERAL FIELDS AND VALID DATES FOR DATE FIELDS.');
             return;
         }
         
