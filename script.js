@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
-    
-    document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
+document.addEventListener("DOMContentLoaded", function(_calculate_loan) {
+    document.querySelector('form').addEventListener('submit', function(_calculate_loan) {
+        _calculate_loan.preventDefault()
+
 
         var name = document.querySelector('input[type="text"]').value;
         var Amount = parseFloat(document.querySelector('input[type="number"]:nth-of-type(2)').value);
@@ -11,12 +11,13 @@ document.addEventListener("DOMContentLoaded", function() {
         var Repayment = new Date(document.querySelector('input[type="date"]:nth-of-type(6)').value);
         var Operation = new Date(document.querySelector('input[type="date"]:nth-of-type(7)').value);
         
-        if (isNaN(Amount) || isNaN(History) || isNaN(Deposit.getTime()) || isNaN(Collection.getTime()) || isNaN(Repayment.getTime()) || isNaN(Operation.getTime())) {
-            alert('PLEASE ENTER THE VALID NUMERIC VALUES FOR THE SEVERAL FIELDS AND VALID DATES FOR DATE FIELDS.');
-            return;
-        }
+        if (!name.trim() || isNaN(Amount) || isNaN(History) || isNaN(Deposit.getTime()) || isNaN(Collection.getTime()) || isNaN(Repayment.getTime()) || isNaN(Operation.getTime())) {
+        alert('PLEASE ENTER THE VALID NUMERIC VALUES FOR THE SEVERAL FIELDS AND VALID DATES FOR DATE FIELDS.');
+        return;
+         }
         
-        var points = 0;
+        let points = 0;
+
         if (Amount >= 0) {
             points += 10;
         } else {
@@ -26,20 +27,30 @@ document.addEventListener("DOMContentLoaded", function() {
         points += 10; 
         }
 
-        if (Deposit.getTime() === new Date('2024-02-25').getTime()) { 
+        console.log(Deposit.getMonth() - new Date().getMonth());
+
+        let lastDepositDate=Deposit.getMonth() - new Date().getMonth();
+        let collectionDate= Collection.getMonth()  - new Date().getMonth();
+        let repaymentDate= Repayment.getMonth() - new Date().getMonth();
+
+        if (lastDepositDate == 0) { 
             points += 5;
         }
-        if (Collection.getTime() > new Date('2024-02-25').getTime()) {
+        if (collectionDate > 6){
             points += 10;
         }
-        if (Repayment.getTime() < new Date('2024-02-25').getTime()) {
+        if (repaymentDate < 6) {
             points += 5;
         }
-        if (Operation.getTime() === new Date('2024-02-25').getTime()) { 
-            points += 10;
-        } else {
-            points += 5; 
-        }
+
+if (Operation.getTime() === new Date().getTime()) { 
+    points += 10;
+} else {
+    points += 5; 
+}
+
+        console.log(points);
+
         
         if (points >= 30) {
             alert('CONGRATULATIONS! ' + name + ' YOU  ELIGIBLE FOR LOAN OF ' + Amount + ',' + 'AND YOUR PRESENT POINTS ARE  ' + points + ' POINTS.');
