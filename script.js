@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(_calculate_loan) {
+
     document.querySelector('form').addEventListener('submit', function(_calculate_loan) {
         _calculate_loan.preventDefault()
 
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(_calculate_loan) {
         var Collection = new Date(document.querySelector('input[type="date"]:nth-of-type(5)').value);
         var Repayment = new Date(document.querySelector('input[type="date"]:nth-of-type(6)').value);
         var Operation = new Date(document.querySelector('input[type="date"]:nth-of-type(7)').value);
-        
+ 
         if (!name.trim() || isNaN(Amount) || isNaN(History) || isNaN(Deposit.getTime()) || isNaN(Collection.getTime()) || isNaN(Repayment.getTime()) || isNaN(Operation.getTime())) {
         alert('PLEASE ENTER THE VALID NUMERIC VALUES FOR THE SEVERAL FIELDS AND VALID DATES FOR DATE FIELDS.');
         return;
@@ -27,11 +28,16 @@ document.addEventListener("DOMContentLoaded", function(_calculate_loan) {
         points += 10; 
         }
 
-        console.log(Deposit.getMonth() - new Date().getMonth());
 
         let lastDepositDate=Deposit.getMonth() - new Date().getMonth();
         let collectionDate= Collection.getMonth()  - new Date().getMonth();
         let repaymentDate= Repayment.getMonth() - new Date().getMonth();
+        let peration= Operation.getMonth() - new Date().getMonth();
+
+        console.log(lastDepositDate);
+        console.log(collectionDate);
+        console.log(repaymentDate);
+        console.log(peration);
 
         if (lastDepositDate == 0) { 
             points += 5;
@@ -43,11 +49,11 @@ document.addEventListener("DOMContentLoaded", function(_calculate_loan) {
             points += 5;
         }
 
-if (Operation.getTime() === new Date().getTime()) { 
-    points += 10;
-} else {
-    points += 5; 
-}
+        if (Operation.getTime() === new Date().getTime()) { 
+        points += 10;
+        } else {
+        points += 5; 
+        }
 
         console.log(points);
 
