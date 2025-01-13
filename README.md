@@ -6,6 +6,17 @@ Checks if the user's loan amount and credit history are valid
 Verifies the user's last deposit date, loan collection date, repayment period, and last operation on account
 Calculates a score based on the user's input and determines if they are eligible for a loan.
 
+## Screenshots and Preview
+### Application Form
+![image](https://github.com/user-attachments/assets/02f5d63b-3b5b-4f95-90d0-1ac7db253a91)
+
+![image](https://github.com/user-attachments/assets/5637ab80-f63f-4dc7-8988-ad3baa1bfbe6)
+
+### Home Page
+![image](https://github.com/user-attachments/assets/481eb27f-039b-4510-9280-2021133c82aa)
+
+![image](https://github.com/user-attachments/assets/b3b873ae-e342-4a1b-ad9f-de2df4fba4d1)
+
 ## Technology Stack
 HTML
 CSS
